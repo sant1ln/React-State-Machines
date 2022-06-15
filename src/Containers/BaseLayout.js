@@ -12,7 +12,7 @@ export const BaseLayout = () => {
 
   return (
     <div className='BaseLayout'>
-      <Nav />
+      <Nav state={state} send={send}/>
       <StepsLayout state={state} send={send} />
     </div>
   );
