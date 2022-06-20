@@ -3,7 +3,7 @@ import { Welcome } from '../Components/Welcome';
 import { Search } from '../Components/Search';
 import { Passengers } from '../Components/Passengers';
 import { Tickets } from '../Components/Tickets';
-import './StepsLayout.css';
+import './styles/StepsLayout.css';
 
 export const StepsLayout = ({ state, send }) => {
   const renderContent = () => {

@@ -2,7 +2,7 @@ import React from 'react';
 import { useMachine } from '@xstate/react';
 import { Nav } from '../Components/Nav';
 import { StepsLayout } from './StepsLayout';
-import './BaseLayout.css';
+import './styles/BaseLayout.css';
 import { bookingMachine } from '../machines/bookingMachine';
 
 export const BaseLayout = () => {

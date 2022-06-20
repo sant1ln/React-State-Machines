@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './Passengers.css';
+import './styles/Passengers.css';
 
 export const Passengers = ({ state, send }) => {
   const [value, changeValue] = useState('');
