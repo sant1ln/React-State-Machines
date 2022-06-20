@@ -40,7 +40,7 @@ const fillCountries = {
 export const bookingMachine = createMachine(
   {
     id: 'Buy plane tickets',
-    initial: 'initial',
+    initial: 'passengers',
     context: {
       passengers: [],
       selectedCountry: '',
@@ -112,9 +112,6 @@ export const bookingMachine = createMachine(
   },
   {
     actions: {
-      printStart: () => console.log('Print start'),
-      printEntry: () => console.log('Print entry to search'),
-      printExit: () => console.log('Print exit from search'),
       cleanContext: assign({
         selectedCountry: "",
         passengers: [],

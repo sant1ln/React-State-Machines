@@ -27,3 +27,29 @@
 .Passengers-title {
   margin-bottom: 16px;
 }
+
+.Passengers-list{
+  align-self: flex-start;
+}
+
+.Passenger{
+  list-style: none;
+  text-align: start;
+  margin: 2px 0;
+}
+
+.Passenger:nth-child(odd){
+  background-color: #FFF;
+  padding: 5px;
+  border-radius: 5px;
+  color: #4F54A7;
+  font-weight: 600;
+}
+
+.Passenger:nth-child(even){
+  background-color: #4F54A7;
+  padding: 5px;
+  border-radius: 5px;
+  color: #FFF;
+  font-weight: 600;
+}
