@@ -1,4 +1,5 @@
 import { assign, createMachine } from 'xstate';
+import { fetchCountries } from '../Utils/api';
 
 const reset = assign({
   passengers: (_, event) => event.passengers = [],
@@ -10,9 +11,21 @@ const fillCountries = {
   initial: 'loading',
   states: {
     loading: {
-      on: {
-        DONE: 'success',
-        ERROR: 'failure'
+      invoke:{
+        id: 'getCountries',
+        src: () => fetchCountries,
+        onDone:{
+          target: 'success',
+          actions: assign({
+            countries: (context,event) => event.data,
+          })
+        },
+        onError:{
+          target:'failure',
+          actions: assign({
+            error: 'Fallo el request'
+          })
+        }
       }
     },
     success: {},
@@ -31,6 +44,8 @@ export const bookingMachine = createMachine(
     context: {
       passengers: [],
       selectedCountry: '',
+      countires: [],
+      error: '',
     },
     states: {
       initial: {
