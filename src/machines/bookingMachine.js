@@ -77,7 +77,10 @@ export const bookingMachine = createMachine(
       },
       passengers: {
         on: {
-          DONE: 'tickets',
+          DONE: {
+            target: 'tickets',
+            cond: 'moreThanOnePassenger'
+          },
           ADD: {
             target: 'passengers',
             actions: assign(
@@ -91,6 +94,12 @@ export const bookingMachine = createMachine(
         }
       },
       tickets: {
+        after: {
+          5000: {
+            target: 'initial',
+            actions: 'cleanContext'
+          }
+        },
         on: {
           FINISH: 'initial',
           CANCEL: {
@@ -105,7 +114,16 @@ export const bookingMachine = createMachine(
     actions: {
       printStart: () => console.log('Print start'),
       printEntry: () => console.log('Print entry to search'),
-      printExit: () => console.log('Print exit from search')
+      printExit: () => console.log('Print exit from search'),
+      cleanContext: assign({
+        selectedCountry: "",
+        passengers: [],
+      }),
+    },
+    guards: {
+      moreThanOnePassenger: (context) => {
+        return context.passengers.length > 0
+      }
     }
   }
 );
