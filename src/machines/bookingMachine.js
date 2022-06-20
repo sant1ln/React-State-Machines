@@ -5,6 +5,25 @@ const reset = assign({
   selectedCountry: (_, event) => event.selectedCountry = "",
 });
 
+
+const fillCountries = {
+  initial: 'loading',
+  states: {
+    loading: {
+      on: {
+        DONE: 'success',
+        ERROR: 'failure'
+      }
+    },
+    success: {},
+    failure: {
+      on: {
+        RETRY: { target: 'loading'}
+      }
+    }
+  }
+}
+
 export const bookingMachine = createMachine(
   {
     id: 'Buy plane tickets',
@@ -38,7 +57,8 @@ export const bookingMachine = createMachine(
             target:"initial",
             actions: reset
           },
-        }
+        },
+        ...fillCountries
       },
       passengers: {
         on: {
