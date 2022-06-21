@@ -40,7 +40,7 @@ const fillCountries = {
 export const bookingMachine = createMachine(
   {
     id: 'Buy plane tickets',
-    initial: 'passengers',
+    initial: 'initial',
     context: {
       passengers: [],
       selectedCountry: '',
@@ -65,7 +65,7 @@ export const bookingMachine = createMachine(
           CONTINUE: {
             target: 'passengers',
             actions: assign({
-              selectedContury: (context, event) => event.selectedCountry
+              selectedCountry: (context, event) => event.selectedCountry
             })
           },
           CANCEL: {
@@ -94,12 +94,14 @@ export const bookingMachine = createMachine(
         }
       },
       tickets: {
-        after: {
+        target: 'initial',
+        actions: 'cleanContext',
+       /*  after: {
           5000: {
             target: 'initial',
             actions: 'cleanContext'
           }
-        },
+        }, */
         on: {
           FINISH: 'initial',
           CANCEL: {

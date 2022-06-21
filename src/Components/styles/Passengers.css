@@ -30,12 +30,21 @@
 
 .Passengers-list{
   align-self: flex-start;
+  padding: 0;
+  width: 100%;
 }
 
 .Passenger{
   list-style: none;
   text-align: start;
-  margin: 2px 0;
+  margin: 5px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.Passenger span{
+  cursor: pointer;
 }
 
 .Passenger:nth-child(odd){

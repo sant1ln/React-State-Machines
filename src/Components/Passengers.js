@@ -26,7 +26,10 @@ export const Passengers = ({ state, send }) => {
       <ul className='Passengers-list'>
         {
           passengers.map( (passenger,index) => (
-            <li className='Passenger' key={index}>{passenger}  X</li> 
+            <li className='Passenger' key={index}>
+                {passenger}  
+            <span title="Eliminar">❌</span>
+            </li> 
           ))
         }
       </ul>
